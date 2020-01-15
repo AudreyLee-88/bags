@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
     std::ifstream inFile(argv[1]);
     short bagNumber;
     Queue<int> bags(atoi(argv[2]));
-    StackAr<Queue<int>> containers;
+    StackAr<Queue<int>> containers(50);
 
     while(inFile >> bagNumber){
         if (!bags.isFull()){
@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
     }
     containers.push(bags);
     bags.makeEmpty();
-    
+
     while(!containers.isEmpty()){
         bags = containers.topAndPop();
         while (!bags.isEmpty()){
